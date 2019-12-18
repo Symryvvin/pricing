@@ -1,0 +1,187 @@
+[
+  {
+    "artist": "Emrah Elmasli",
+    "artist_ids": [
+      "433083c3-8a6c-43d9-8030-c9fcbd2477a2"
+    ],
+    "booster": true,
+    "border_color": "black",
+    "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+    "cmc": 3.0,
+    "collector_number": "331",
+    "color_identity": [
+      "G"
+    ],
+    "colors": [
+      "G"
+    ],
+    "digital": false,
+    "foil": true,
+    "frame": "2015",
+    "full_art": false,
+    "games": [],
+    "highres_image": false,
+    "id": "e8b2168d-38e5-429f-8663-f0d258c9c441",
+    "illustration_id": "544b71c5-d04e-413e-a610-460b457ce135",
+    "image_uris": {
+      "art_crop": "https://img.scryfall.com/cards/art_crop/front/e/8/e8b2168d-38e5-429f-8663-f0d258c9c441.jpg?1576397750",
+      "border_crop": "https://img.scryfall.com/cards/border_crop/front/e/8/e8b2168d-38e5-429f-8663-f0d258c9c441.jpg?1576397750",
+      "large": "https://img.scryfall.com/cards/large/front/e/8/e8b2168d-38e5-429f-8663-f0d258c9c441.jpg?1576397750",
+      "normal": "https://img.scryfall.com/cards/normal/front/e/8/e8b2168d-38e5-429f-8663-f0d258c9c441.jpg?1576397750",
+      "png": "https://img.scryfall.com/cards/png/front/e/8/e8b2168d-38e5-429f-8663-f0d258c9c441.png?1576397750",
+      "small": "https://img.scryfall.com/cards/small/front/e/8/e8b2168d-38e5-429f-8663-f0d258c9c441.jpg?1576397750"
+    },
+    "lang": "en",
+    "layout": "normal",
+    "legalities": {
+      "brawl": "not_legal",
+      "commander": "not_legal",
+      "duel": "not_legal",
+      "future": "legal",
+      "historic": "not_legal",
+      "legacy": "not_legal",
+      "modern": "not_legal",
+      "oldschool": "not_legal",
+      "pauper": "not_legal",
+      "penny": "not_legal",
+      "pioneer": "not_legal",
+      "standard": "not_legal",
+      "vintage": "not_legal"
+    },
+    "mana_cost": "{2}{G}",
+    "multiverse_ids": [],
+    "name": "Setessan Champion",
+    "nonfoil": true,
+    "object": "card",
+    "oracle_id": "38513660-260f-4663-b199-6473fa004a3b",
+    "oracle_text": "Constellation — Whenever an enchantment enters the battlefield under your control, put a +1/+1 counter on Setessan Champion and draw a card.",
+    "oversized": false,
+    "power": "1",
+    "preview": {
+      "previewed_at": "2019-12-13",
+      "source": "Wizards of the Coast",
+      "source_uri": "https://magic.wizards.com/en/articles/archive/card-image-gallery/theros-beyond-death-variants"
+    },
+    "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3A38513660-260f-4663-b199-6473fa004a3b&unique=prints",
+    "promo": false,
+    "rarity": "rare",
+    "related_uris": {
+      "edhrec": "https://edhrec.com/route/?cc=Setessan+Champion",
+      "mtgtop8": "https://mtgtop8.com/search?MD_check=1&SB_check=1&cards=Setessan+Champion",
+      "tcgplayer_decks": "https://decks.tcgplayer.com/magic/deck/search?contains=Setessan+Champion&page=1&partner=Scryfall&utm_campaign=affiliate&utm_medium=scryfall&utm_source=scryfall"
+    },
+    "released_at": "2020-01-24",
+    "reprint": false,
+    "reserved": false,
+    "rulings_uri": "https://api.scryfall.com/cards/e8b2168d-38e5-429f-8663-f0d258c9c441/rulings",
+    "scryfall_set_uri": "https://scryfall.com/sets/thb?utm_source=api",
+    "scryfall_uri": "https://scryfall.com/card/thb/331/setessan-champion?utm_source=api",
+    "set": "thb",
+    "set_name": "Theros Beyond Death",
+    "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Athb&unique=prints",
+    "set_type": "expansion",
+    "set_uri": "https://api.scryfall.com/sets/5f23a78d-cda1-462a-8be3-a62b40c34913",
+    "story_spotlight": false,
+    "tcgplayer_id": 206133,
+    "textless": false,
+    "toughness": "3",
+    "type_line": "Creature — Human Warrior",
+    "uri": "https://api.scryfall.com/cards/e8b2168d-38e5-429f-8663-f0d258c9c441",
+    "variation": false
+  },
+  {
+    "artist": "Chris Rahn",
+    "artist_ids": [
+      "7742047e-0f80-4c0f-a530-d07460165e86"
+    ],
+    "booster": true,
+    "border_color": "black",
+    "card_back_id": "0aeebaf5-8c7d-4636-9e82-8c27447861f7",
+    "cmc": 4.0,
+    "collector_number": "133",
+    "color_identity": [
+      "R"
+    ],
+    "colors": [
+      "R"
+    ],
+    "digital": false,
+    "edhrec_rank": 11280,
+    "foil": true,
+    "frame": "2015",
+    "full_art": false,
+    "games": [
+      "arena",
+      "mtgo",
+      "paper"
+    ],
+    "highres_image": false,
+    "id": "02a11c22-c4c0-4024-b775-26354337f2fd",
+    "illustration_id": "3aa4a647-117c-4abf-b1e8-39e17354ba27",
+    "image_uris": {
+      "art_crop": "https://img.scryfall.com/cards/art_crop/front/0/2/02a11c22-c4c0-4024-b775-26354337f2fd.jpg?1569996421",
+      "border_crop": "https://img.scryfall.com/cards/border_crop/front/0/2/02a11c22-c4c0-4024-b775-26354337f2fd.jpg?1569996421",
+      "large": "https://img.scryfall.com/cards/large/front/0/2/02a11c22-c4c0-4024-b775-26354337f2fd.jpg?1569996421",
+      "normal": "https://img.scryfall.com/cards/normal/front/0/2/02a11c22-c4c0-4024-b775-26354337f2fd.jpg?1569996421",
+      "png": "https://img.scryfall.com/cards/png/front/0/2/02a11c22-c4c0-4024-b775-26354337f2fd.png?1569996421",
+      "small": "https://img.scryfall.com/cards/small/front/0/2/02a11c22-c4c0-4024-b775-26354337f2fd.jpg?1569996421"
+    },
+    "lang": "ko",
+    "layout": "normal",
+    "legalities": {
+      "brawl": "legal",
+      "commander": "legal",
+      "duel": "legal",
+      "future": "legal",
+      "historic": "legal",
+      "legacy": "legal",
+      "modern": "legal",
+      "oldschool": "not_legal",
+      "pauper": "not_legal",
+      "penny": "legal",
+      "pioneer": "legal",
+      "standard": "legal",
+      "vintage": "legal"
+    },
+    "mana_cost": "{2}{R}{R}",
+    "multiverse_ids": [
+      474709
+    ],
+    "name": "Opportunistic Dragon",
+    "nonfoil": true,
+    "object": "card",
+    "oracle_id": "46f46bdd-52b8-436f-9a39-f5360a84b2cd",
+    "oracle_text": "Flying\nWhen Opportunistic Dragon enters the battlefield, choose target Human or artifact an opponent controls. For as long as Opportunistic Dragon remains on the battlefield, gain control of that permanent, it loses all abilities, and it can't attack or block.",
+    "oversized": false,
+    "power": "4",
+    "printed_name": "기회주의적인 용",
+    "printed_text": "비행\n기회주의적인 용이 전장에 들어올 때, 상대가 조종하는 인간 또는 마법물체를 목표로 정한다. 기회주의적인 용이 전장에 남아 있는 한, 그 지속물의 조종권을 얻고, 그 지속물은 모든 능력을 잃으며, 그 지속물은 공격하거나 방어할 수 없다.",
+    "printed_type_line": "생물 — 용",
+    "prints_search_uri": "https://api.scryfall.com/cards/search?order=released&q=oracleid%3A46f46bdd-52b8-436f-9a39-f5360a84b2cd&unique=prints",
+    "promo": false,
+    "rarity": "rare",
+    "related_uris": {
+      "edhrec": "https://edhrec.com/route/?cc=Opportunistic+Dragon",
+      "gatherer": "https://gatherer.wizards.com/Pages/Card/Details.aspx?multiverseid=474709&printed=true",
+      "mtgtop8": "https://mtgtop8.com/search?MD_check=1&SB_check=1&cards=Opportunistic+Dragon",
+      "tcgplayer_decks": "https://decks.tcgplayer.com/magic/deck/search?contains=Opportunistic+Dragon&page=1&partner=Scryfall&utm_campaign=affiliate&utm_medium=scryfall&utm_source=scryfall"
+    },
+    "released_at": "2019-10-04",
+    "reprint": false,
+    "reserved": false,
+    "rulings_uri": "https://api.scryfall.com/cards/02a11c22-c4c0-4024-b775-26354337f2fd/rulings",
+    "scryfall_set_uri": "https://scryfall.com/sets/eld?utm_source=api",
+    "scryfall_uri": "https://scryfall.com/card/eld/133/ko/%EA%B8%B0%ED%9A%8C%EC%A3%BC%EC%9D%98%EC%A0%81%EC%9D%B8-%EC%9A%A9?utm_source=api",
+    "set": "eld",
+    "set_name": "Throne of Eldraine",
+    "set_search_uri": "https://api.scryfall.com/cards/search?order=set&q=e%3Aeld&unique=prints",
+    "set_type": "expansion",
+    "set_uri": "https://api.scryfall.com/sets/a90a7b2f-9dd8-4fc7-9f7d-8ea2797ec782",
+    "story_spotlight": false,
+    "textless": false,
+    "toughness": "3",
+    "type_line": "Creature — Dragon",
+    "uri": "https://api.scryfall.com/cards/02a11c22-c4c0-4024-b775-26354337f2fd",
+    "variation": false
+  }
+]
