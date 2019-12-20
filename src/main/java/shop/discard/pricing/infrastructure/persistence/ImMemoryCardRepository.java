@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 @Repository(value = "memory")
 public class ImMemoryCardRepository implements CardRepository {
 
+	private static final int MAX_SEARCH_RESULT_COUNT = 15;
+
 	private Map<Long, Card> store = new HashMap<>();
 	private long sequence = 1;
 
@@ -30,11 +32,13 @@ public class ImMemoryCardRepository implements CardRepository {
 	}
 
 	@Override
-	public Collection<Card> findByPartOfName(String partOfName) {
+	public Collection<Card> findByPartOfName(String partOfName, String langCode) {
+		CardFilter filter = CardFilter.filterBy(partOfName, langCode);
 		return store.values()
 				.stream()
-				.filter(c -> c.getName().contains(partOfName))
-				.limit(10)
+				.filter(filter::filter)
+				.sorted()
+				.limit(MAX_SEARCH_RESULT_COUNT)
 				.collect(Collectors.toList());
 	}
 

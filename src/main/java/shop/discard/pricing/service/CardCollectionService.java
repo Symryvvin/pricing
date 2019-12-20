@@ -51,8 +51,8 @@ public class CardCollectionService implements InitializingBean {
 		}
 	}
 
-	public Collection<CardPresenter> searchByPartOfName(String partOfName) {
-		return repository.findByPartOfName(partOfName).stream()
+	public Collection<CardPresenter> searchByPartOfName(String partOfName, String langCode) {
+		return repository.findByPartOfName(partOfName, langCode).stream()
 				.map(CardPresenter::from)
 				.collect(Collectors.toList());
 	}
