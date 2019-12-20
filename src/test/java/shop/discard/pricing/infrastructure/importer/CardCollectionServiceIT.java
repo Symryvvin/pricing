@@ -11,8 +11,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import shop.discard.pricing.domain.CardRepository;
+import shop.discard.pricing.service.CardCollectionService;
 import shop.discard.pricing.service.CardImportException;
-import shop.discard.pricing.service.CardImportService;
 import shop.discard.pricing.service.CardImportSource;
 import shop.discard.pricing.service.CardParser;
 
@@ -26,7 +26,7 @@ import java.nio.file.Paths;
 		locations = "classpath:test-application.properties")
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class CardImportServiceIT {
+class CardCollectionServiceIT {
 
 	@Value("${json.local.path}")
 	private String jsonPath;
@@ -38,7 +38,7 @@ class CardImportServiceIT {
 
 	@Test
 	public void importCards() throws CardImportException {
-		CardImportService service = new CardImportService(getSource(), parser, repository);
+		CardCollectionService service = new CardCollectionService(getSource(), parser, repository);
 		service.importCards();
 	}
 

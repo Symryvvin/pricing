@@ -10,12 +10,17 @@ import java.util.Collection;
 public class JpaCardRepository implements CardRepository {
 
 	@Override
-	public Card findById(String id) {
+	public Card findById(long id) {
 		return null;
 	}
 
 	@Override
-	public Collection<Card> findByName(String name) {
+	public Card findByName(String name) {
+		return null;
+	}
+
+	@Override
+	public Collection<Card> findByPartOfName(String partOfName) {
 		return null;
 	}
 

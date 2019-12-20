@@ -4,9 +4,11 @@ import java.util.Collection;
 
 public interface CardRepository {
 
-	Card findById(String id);
+	Card findById(long id);
 
-	Collection<Card> findByName(String name);
+	Card findByName(String name);
+
+	Collection<Card> findByPartOfName(String partOfName);
 
 	long save(Card card);
 
