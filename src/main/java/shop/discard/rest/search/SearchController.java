@@ -1,6 +1,8 @@
 package shop.discard.rest.search;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shop.discard.pricing.service.CardCollectionService;
 
@@ -17,18 +19,24 @@ public class SearchController {
 	CardCollectionService cardCollectionService;
 
 	@GetMapping(value = "/autocomplete/{lang}")
-	public Collection<String> autocompleteResult(
+	public ResponseEntity<Collection<String>> autocomplete(
 			@PathVariable(value = "lang") String langCode,
 			@RequestParam(value = "name") String partOfName
 	) {
 		try {
 			if (checkMinNumberOfCharacters(partOfName)) {
-				return cardCollectionService.searchByPartOfName(partOfName, langCode);
+				return new ResponseEntity<>(
+						cardCollectionService.searchByPartOfName(partOfName, langCode),
+						HttpStatus.OK
+				);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			return new ResponseEntity<>(
+					Collections.singleton(e.toString()),
+					HttpStatus.OK
+			);
 		}
-		return Collections.emptyList();
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	private boolean checkMinNumberOfCharacters(String partOfName) {
