@@ -1,22 +1,30 @@
 package shop.discard.pricing.domain;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
-public class Card {
+public class Card implements Comparable<Card> {
+	private static final String DATE_PATTERN = "yyyy-MM-dd";
+
 	private UUID guid;
 	private String name;
 	private String printCode;
 	private String language;
+	private LocalDate releaseDate;
 
-	private Card(String guid, String name, String printCode, String language) {
-		this.guid = UUID.fromString(guid);
+	public Card(UUID guid, String name, String printCode, String language, LocalDate releaseDate) {
+		this.guid = guid;
 		this.name = name;
 		this.printCode = printCode;
 		this.language = language;
+		this.releaseDate = releaseDate;
 	}
 
-	public static Card from(String id, String name, String printCode, String language) {
-		return new Card(id, name, printCode, language);
+	public static Card from(String id, String name, String printCode, String language, String releaseDate) {
+		UUID guid = UUID.fromString(id);
+		LocalDate parsedReleaseDate = LocalDate.parse(releaseDate, DateTimeFormatter.ofPattern(DATE_PATTERN));
+		return new Card(guid, name, printCode, language, parsedReleaseDate);
 	}
 
 	public UUID getGuid() {
@@ -35,6 +43,10 @@ public class Card {
 		return language;
 	}
 
+	public LocalDate getReleaseDate() {
+		return releaseDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Card{" +
@@ -42,6 +54,13 @@ public class Card {
 				", name='" + name + '\'' +
 				", printCode='" + printCode + '\'' +
 				", language='" + language + '\'' +
+				", releaseDate=" + releaseDate +
 				'}';
 	}
+
+	@Override
+	public int compareTo(Card o) {
+		return name.compareTo(o.name);
+	}
+
 }

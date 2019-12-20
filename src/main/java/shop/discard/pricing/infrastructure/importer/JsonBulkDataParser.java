@@ -38,7 +38,12 @@ public class JsonBulkDataParser implements CardParser<InputStream> {
 
 	private Collection<Card> convertToCard(Collection<JsonCardData> jsonCards) {
 		return jsonCards.stream()
-				.map(jc -> Card.from(jc.getId(), jc.getName(), jc.getPrintCode(), jc.getLang()))
+				.map(jc -> Card.from(
+						jc.getId(),
+						jc.getName(),
+						jc.getPrintCode(),
+						jc.getLang(),
+						jc.getReleaseDate()))
 				.collect(Collectors.toList());
 	}
 

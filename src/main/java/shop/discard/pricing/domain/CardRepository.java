@@ -8,7 +8,7 @@ public interface CardRepository {
 
 	Card findByName(String name);
 
-	Collection<Card> findByPartOfName(String partOfName);
+	Collection<Card> findByPartOfName(String partOfName, String langCode);
 
 	long save(Card card);
 

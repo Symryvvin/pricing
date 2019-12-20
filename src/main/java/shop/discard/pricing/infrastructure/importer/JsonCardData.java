@@ -8,6 +8,7 @@ public class JsonCardData {
 	private String name;
 	private String printCode;
 	private String lang;
+	private String releaseDate;
 
 	public String getId() {
 		return id;
@@ -39,5 +40,13 @@ public class JsonCardData {
 
 	public void setLang(String lang) {
 		this.lang = lang;
+	}
+
+	public String getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 }

@@ -34,6 +34,7 @@ public class JsonCardDeserializer extends StdDeserializer<JsonCardData> {
 		}
 		card.setPrintCode(node.get("set").textValue());
 		card.setLang(node.get("lang").textValue());
+		card.setReleaseDate(node.get("released_at").textValue());
 
 		return card;
 	}
