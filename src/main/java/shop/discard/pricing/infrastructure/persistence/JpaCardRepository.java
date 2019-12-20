@@ -20,7 +20,7 @@ public class JpaCardRepository implements CardRepository {
 	}
 
 	@Override
-	public Collection<Card> findByPartOfName(String partOfName, String langCode) {
+	public Collection<String> findNameByPartOfName(String partOfName, String langCode) {
 		return null;
 	}
 

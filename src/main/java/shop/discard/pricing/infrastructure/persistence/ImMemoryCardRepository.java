@@ -32,12 +32,14 @@ public class ImMemoryCardRepository implements CardRepository {
 	}
 
 	@Override
-	public Collection<Card> findByPartOfName(String partOfName, String langCode) {
+	public Collection<String> findNameByPartOfName(String partOfName, String langCode) {
 		CardFilter filter = CardFilter.filterBy(partOfName, langCode);
 		return store.values()
 				.stream()
 				.filter(filter::filter)
 				.sorted()
+				.map(Card::getName)
+				.distinct()
 				.limit(MAX_SEARCH_RESULT_COUNT)
 				.collect(Collectors.toList());
 	}

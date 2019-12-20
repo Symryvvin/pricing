@@ -17,10 +17,9 @@ public class SearchController {
 	CardCollectionService cardCollectionService;
 
 	@GetMapping(value = "/autocomplete/{lang}")
-	public Collection<CardPresenter> autocompleteResult(
+	public Collection<String> autocompleteResult(
 			@PathVariable(value = "lang") String langCode,
 			@RequestParam(value = "name") String partOfName
-
 	) {
 		try {
 			if (checkMinNumberOfCharacters(partOfName)) {

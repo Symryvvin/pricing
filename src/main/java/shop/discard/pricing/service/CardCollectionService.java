@@ -6,12 +6,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import shop.discard.pricing.domain.Card;
 import shop.discard.pricing.domain.CardRepository;
-import shop.discard.rest.search.CardPresenter;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 @Service
 public class CardCollectionService implements InitializingBean {
@@ -51,9 +49,7 @@ public class CardCollectionService implements InitializingBean {
 		}
 	}
 
-	public Collection<CardPresenter> searchByPartOfName(String partOfName, String langCode) {
-		return repository.findByPartOfName(partOfName, langCode).stream()
-				.map(CardPresenter::from)
-				.collect(Collectors.toList());
+	public Collection<String> searchByPartOfName(String partOfName, String langCode) {
+		return repository.findNameByPartOfName(partOfName, langCode);
 	}
 }

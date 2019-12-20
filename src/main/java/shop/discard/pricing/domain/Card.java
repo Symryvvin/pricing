@@ -60,7 +60,12 @@ public class Card implements Comparable<Card> {
 
 	@Override
 	public int compareTo(Card o) {
-		return name.compareTo(o.name);
+		int byLength = Integer.compare(name.length(), o.name.length());
+		int byName = name.compareTo(o.name);
+		if (byLength == 0) {
+			return byName;
+		}
+		return byLength;
 	}
 
 }
