@@ -26,7 +26,7 @@ class ImMemoryCardRepositoryTest {
 	}
 
 	@Test
-	void findNameByPartOfName() {
+	void findNameByPartOfName() throws Exception {
 		String partOfName = "лес";
 		System.out.println(repository.findNameByPartOfName(partOfName, "ru"));
 		List<String> result = new ArrayList<>(repository.findNameByPartOfName(partOfName, "ru"));

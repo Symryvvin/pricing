@@ -3,6 +3,7 @@ package shop.discard.pricing.infrastructure.persistence;
 import org.springframework.stereotype.Repository;
 import shop.discard.pricing.domain.Card;
 import shop.discard.pricing.domain.CardRepository;
+import shop.discard.pricing.domain.CardRepositoryException;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -32,16 +33,20 @@ public class ImMemoryCardRepository implements CardRepository {
 	}
 
 	@Override
-	public Collection<String> findNameByPartOfName(String partOfName, String langCode) {
-		CardFilter filter = CardFilter.filterBy(partOfName, langCode);
-		return store.values()
-				.stream()
-				.filter(filter::filter)
-				.sorted()
-				.map(Card::getName)
-				.distinct()
-				.limit(MAX_SEARCH_RESULT_COUNT)
-				.collect(Collectors.toList());
+	public Collection<String> findNameByPartOfName(String partOfName, String langCode) throws CardRepositoryException {
+		try {
+			CardFilter filter = CardFilter.filterBy(partOfName, langCode);
+			return store.values()
+					.stream()
+					.filter(filter::filter)
+					.sorted()
+					.map(Card::getName)
+					.distinct()
+					.limit(MAX_SEARCH_RESULT_COUNT)
+					.collect(Collectors.toList());
+		} catch (Exception e) {
+			throw new CardRepositoryException("Error during search by name", e);
+		}
 	}
 
 	@Override

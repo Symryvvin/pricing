@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import shop.discard.pricing.domain.Card;
 import shop.discard.pricing.domain.CardRepository;
+import shop.discard.pricing.domain.CardRepositoryException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,7 +50,7 @@ public class CardCollectionService implements InitializingBean {
 		}
 	}
 
-	public Collection<String> searchByPartOfName(String partOfName, String langCode) {
+	public Collection<String> searchByPartOfName(String partOfName, String langCode) throws CardRepositoryException {
 		return repository.findNameByPartOfName(partOfName, langCode);
 	}
 }
