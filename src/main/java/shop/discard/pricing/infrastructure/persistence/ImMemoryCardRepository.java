@@ -39,9 +39,9 @@ public class ImMemoryCardRepository implements CardRepository {
 			return store.values()
 					.stream()
 					.filter(filter::filter)
-					.sorted()
 					.map(Card::getName)
 					.distinct()
+					.sorted()
 					.limit(MAX_SEARCH_RESULT_COUNT)
 					.collect(Collectors.toList());
 		} catch (Exception e) {
