@@ -1,32 +1,33 @@
 package shop.discard.pricing.domain;
 
 import org.apache.commons.lang3.StringUtils;
+import shop.discard.pricing.domain.lang.Language;
 
 import java.util.Objects;
 
 public class CardName implements Comparable<CardName> {
 
 	private String name;
-	private String languageCode;
+	private Language language;
 
-	private CardName(String name, String languageCode) {
+	private CardName(String name, Language language) {
 		this.name = name;
-		this.languageCode = languageCode;
+		this.language = language;
 	}
 
-	public static CardName from(String name, String languageCode) {
-		if (StringUtils.isEmpty(name) || StringUtils.isEmpty(languageCode)) {
-			throw new IllegalArgumentException("cannot be null");
+	public static CardName from(String name, Language language) {
+		if (StringUtils.isEmpty(name) || language == null) {
+			throw new IllegalArgumentException("Card name or language cannot be null");
 		}
-		return new CardName(name, languageCode);
+		return new CardName(name, language);
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public String getLanguageCode() {
-		return languageCode;
+	public Language getLanguage() {
+		return language;
 	}
 
 	@Override

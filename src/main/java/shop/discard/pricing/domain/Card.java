@@ -1,7 +1,11 @@
 package shop.discard.pricing.domain;
 
+import shop.discard.pricing.domain.lang.Language;
+import shop.discard.pricing.domain.lang.NotSupportedLanguageException;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Card implements Comparable<Card> {
@@ -10,10 +14,10 @@ public class Card implements Comparable<Card> {
 	private UUID guid;
 	private String name;
 	private String printCode;
-	private String language;
+	private Language language;
 	private LocalDate releaseDate;
 
-	public Card(UUID guid, String name, String printCode, String language, LocalDate releaseDate) {
+	public Card(UUID guid, String name, String printCode, Language language, LocalDate releaseDate) {
 		this.guid = guid;
 		this.name = name;
 		this.printCode = printCode;
@@ -21,9 +25,11 @@ public class Card implements Comparable<Card> {
 		this.releaseDate = releaseDate;
 	}
 
-	public static Card from(String id, String name, String printCode, String language, String releaseDate) {
+	public static Card from(String id, String name, String printCode, String languageCode, String releaseDate)
+			throws NotSupportedLanguageException {
 		UUID guid = UUID.fromString(id);
 		LocalDate parsedReleaseDate = LocalDate.parse(releaseDate, DateTimeFormatter.ofPattern(DATE_PATTERN));
+		Language language = Language.fromCode(languageCode);
 		return new Card(guid, name, printCode, language, parsedReleaseDate);
 	}
 
@@ -39,7 +45,7 @@ public class Card implements Comparable<Card> {
 		return printCode;
 	}
 
-	public String getLanguage() {
+	public Language getLanguage() {
 		return language;
 	}
 
@@ -56,6 +62,23 @@ public class Card implements Comparable<Card> {
 				", language='" + language + '\'' +
 				", releaseDate=" + releaseDate +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Card card = (Card) o;
+		return Objects.equals(guid, card.guid) &&
+				Objects.equals(name, card.name) &&
+				Objects.equals(printCode, card.printCode) &&
+				language == card.language &&
+				Objects.equals(releaseDate, card.releaseDate);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(guid, name, printCode, language, releaseDate);
 	}
 
 	@Override

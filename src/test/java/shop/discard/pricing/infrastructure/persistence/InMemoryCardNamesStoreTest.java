@@ -17,7 +17,7 @@ class InMemoryCardNamesStoreTest {
 	InMemoryCardNamesStore namesStore;
 
 	@Test
-	void findByPartOfName() {
+	void findByPartOfName() throws Exception {
 		String partOfName = "лес";
 		System.out.println(namesStore.findByPartOfName(partOfName, "ru"));
 		List<String> actual = new ArrayList<>(namesStore.findByPartOfName(partOfName, "ru"));
@@ -30,7 +30,7 @@ class InMemoryCardNamesStoreTest {
 	}
 
 	@Test
-	void findByPartOfNameWithHieroglyph() {
+	void findByPartOfNameWithHieroglyph() throws Exception {
 		String partOfName = "森";
 		System.out.println(namesStore.findByPartOfName(partOfName, "ja"));
 		List<String> actual = new ArrayList<>(namesStore.findByPartOfName(partOfName, "ja"));

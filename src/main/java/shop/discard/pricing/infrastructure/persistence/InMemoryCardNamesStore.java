@@ -6,6 +6,8 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 import shop.discard.pricing.domain.CardName;
 import shop.discard.pricing.domain.CardRepository;
+import shop.discard.pricing.domain.lang.Language;
+import shop.discard.pricing.domain.lang.NotSupportedLanguageException;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
@@ -32,19 +34,19 @@ public class InMemoryCardNamesStore {
 		cardNameCollection = repository.getUniqueCardNames();
 	}
 
-	public Collection<String> findByPartOfName(String findString, String languageCode) {
+	public Collection<String> findByPartOfName(String findString, String languageCode) throws NotSupportedLanguageException {
+		Language language = Language.fromCode(languageCode);
 		return cardNameCollection.stream()
-				.filter(cn -> filter(cn, findString, languageCode))
+				.filter(cn -> filter(cn, findString, language))
 				.sorted()
 				.map(CardName::getName)
 				.limit(MAX_SEARCH_RESULT_COUNT)
 				.collect(Collectors.toList());
 	}
 
-	private boolean filter(CardName cardName, String findString, String languageCode) {
-		boolean byLanguage = cardName.getLanguageCode().equalsIgnoreCase(languageCode);
+	private boolean filter(CardName cardName, String findString, Language language) {
+		boolean byLanguage = cardName.getLanguage() == language;
 		if (byLanguage) {
-			System.out.println();
 			return Arrays.stream(cardName.getName().split(" "))
 					.anyMatch(s -> s.toLowerCase().startsWith(findString.toLowerCase()));
 		}

@@ -1,7 +1,5 @@
 package shop.discard.pricing.infrastructure.persistence;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import shop.discard.pricing.domain.Card;
 import shop.discard.pricing.domain.CardName;
@@ -14,8 +12,6 @@ import java.util.stream.Collectors;
 
 @Repository(value = "memory")
 public class InMemoryCardRepository implements CardRepository {
-
-	private static final Logger logger = LoggerFactory.getLogger(InMemoryCardRepository.class);
 
 	private Map<Long, Card> store = new HashMap<>();
 	private long sequence = 1;
@@ -43,7 +39,7 @@ public class InMemoryCardRepository implements CardRepository {
 
 	@Override
 	public void update(long id, Card card) {
-
+		throw new UnsupportedOperationException();
 	}
 
 	@Override

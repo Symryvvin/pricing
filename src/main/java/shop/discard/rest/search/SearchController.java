@@ -15,8 +15,12 @@ public class SearchController {
 
 	private static final int MINIMUM_NUMBER_OF_CHARS = 3;
 
+	private final InMemoryCardNamesStore namesStore;
+
 	@Autowired
-	InMemoryCardNamesStore namesStore;
+	public SearchController(InMemoryCardNamesStore namesStore) {
+		this.namesStore = namesStore;
+	}
 
 	@GetMapping(value = "/autocomplete/{lang}")
 	public ResponseEntity<Collection<String>> autocomplete(

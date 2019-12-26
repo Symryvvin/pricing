@@ -30,7 +30,7 @@ public class CardCollectionService {
 	}
 
 	@PostConstruct
-	private void postConstruct() throws Exception {
+	private void postConstruct() throws CardImportException {
 		importCards();
 	}
 
