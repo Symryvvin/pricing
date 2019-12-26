@@ -1,19 +1,18 @@
 package shop.discard.pricing.service;
 
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import shop.discard.pricing.domain.Card;
 import shop.discard.pricing.domain.CardRepository;
-import shop.discard.pricing.domain.CardRepositoryException;
 
+import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 
-@Service
-public class CardCollectionService implements InitializingBean {
+@Service(value = "collectionService")
+public class CardCollectionService {
 
 	private CardImportSource<InputStream> source;
 	private CardParser<InputStream> parser;
@@ -30,8 +29,8 @@ public class CardCollectionService implements InitializingBean {
 		this.repository = repository;
 	}
 
-	@Override
-	public void afterPropertiesSet() throws Exception {
+	@PostConstruct
+	private void postConstruct() throws Exception {
 		importCards();
 	}
 
@@ -50,7 +49,4 @@ public class CardCollectionService implements InitializingBean {
 		}
 	}
 
-	public Collection<String> searchByPartOfName(String partOfName, String langCode) throws CardRepositoryException {
-		return repository.findNameByPartOfName(partOfName, langCode);
-	}
 }

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import shop.discard.pricing.service.CardCollectionService;
+import shop.discard.pricing.infrastructure.persistence.InMemoryCardNamesStore;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -16,7 +16,7 @@ public class SearchController {
 	private static final int MINIMUM_NUMBER_OF_CHARS = 3;
 
 	@Autowired
-	CardCollectionService cardCollectionService;
+	InMemoryCardNamesStore namesStore;
 
 	@GetMapping(value = "/autocomplete/{lang}")
 	public ResponseEntity<Collection<String>> autocomplete(
@@ -26,7 +26,7 @@ public class SearchController {
 		try {
 			if (checkMinNumberOfCharacters(partOfName)) {
 				return new ResponseEntity<>(
-						cardCollectionService.searchByPartOfName(partOfName, langCode),
+						namesStore.findByPartOfName(partOfName, langCode),
 						HttpStatus.OK
 				);
 			}

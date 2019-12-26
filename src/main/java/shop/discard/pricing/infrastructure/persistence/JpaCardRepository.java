@@ -2,6 +2,7 @@ package shop.discard.pricing.infrastructure.persistence;
 
 import org.springframework.stereotype.Repository;
 import shop.discard.pricing.domain.Card;
+import shop.discard.pricing.domain.CardName;
 import shop.discard.pricing.domain.CardRepository;
 
 import java.util.Collection;
@@ -20,11 +21,6 @@ public class JpaCardRepository implements CardRepository {
 	}
 
 	@Override
-	public Collection<String> findNameByPartOfName(String partOfName, String langCode) {
-		return null;
-	}
-
-	@Override
 	public long save(Card card) {
 		System.out.println(card);
 		return 0;
@@ -33,5 +29,10 @@ public class JpaCardRepository implements CardRepository {
 	@Override
 	public void update(long id, Card card) {
 
+	}
+
+	@Override
+	public Collection<CardName> getUniqueCardNames() {
+		return null;
 	}
 }

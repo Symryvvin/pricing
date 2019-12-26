@@ -8,9 +8,9 @@ public interface CardRepository {
 
 	Card findByName(String name);
 
-	Collection<String> findNameByPartOfName(String partOfName, String langCode) throws CardRepositoryException;
-
 	long save(Card card);
 
 	void update(long id, Card card);
+
+	Collection<CardName> getUniqueCardNames();
 }
