@@ -6,9 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shop.discard.pricing.infrastructure.persistence.InMemoryCardNamesStore;
 
-import java.util.Collection;
-import java.util.Collections;
-
 @RestController()
 @RequestMapping("/search")
 public class SearchController {
@@ -23,7 +20,7 @@ public class SearchController {
 	}
 
 	@GetMapping(value = "/autocomplete/{lang}")
-	public ResponseEntity<Collection<String>> autocomplete(
+	public ResponseEntity autocomplete(
 			@PathVariable(value = "lang") String langCode,
 			@RequestParam(value = "name") String partOfName
 	) {
@@ -35,10 +32,9 @@ public class SearchController {
 				);
 			}
 		} catch (Exception e) {
-			return new ResponseEntity<>(
-					Collections.singleton(e.toString()),
-					HttpStatus.OK
-			);
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body(e.toString());
 		}
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

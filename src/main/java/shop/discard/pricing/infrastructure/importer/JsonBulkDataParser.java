@@ -53,7 +53,14 @@ public class JsonBulkDataParser implements CardParser<InputStream> {
 	private Optional<Card> convertToCard(JsonCardData data) {
 		try {
 			return Optional.of(
-					Card.from(data.getId(), data.getName(), data.getPrintCode(), data.getLang(), data.getReleaseDate())
+					Card.from(
+							data.getId(),
+							data.getPrintedName(),
+							data.getOracleName(),
+							data.getPrintCode(),
+							data.getLang(),
+							data.getReleaseDate()
+					)
 			);
 		} catch (NotSupportedLanguageException e) {
 			logger.warn("Card with id {} has unsupported language code [{}]", data.getId(), data.getLang());

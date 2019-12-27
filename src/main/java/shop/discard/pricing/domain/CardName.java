@@ -1,26 +1,23 @@
 package shop.discard.pricing.domain;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.Objects;
 
 public class CardName implements Comparable<CardName> {
 
-	private String name;
+	private String printedName;
+	private String oracleName;
 
-	private CardName(String name) {
-		this.name = name;
+	public CardName(String printedName, String oracleName) {
+		this.printedName = printedName;
+		this.oracleName = oracleName;
 	}
 
-	public static CardName from(String name) {
-		if (StringUtils.isEmpty(name)) {
-			throw new IllegalArgumentException("Card name be empty");
-		}
-		return new CardName(name);
+	public String getPrintedName() {
+		return printedName;
 	}
 
-	public String getName() {
-		return name;
+	public String getOracleName() {
+		return oracleName;
 	}
 
 	@Override
@@ -28,18 +25,26 @@ public class CardName implements Comparable<CardName> {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		CardName cardName = (CardName) o;
-		return Objects.equals(name, cardName.name);
+		return Objects.equals(printedName, cardName.printedName);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name);
+		return Objects.hash(printedName);
+	}
+
+	@Override
+	public String toString() {
+		return "CardName{" +
+				"printedName='" + printedName + '\'' +
+				", oracleName='" + oracleName + '\'' +
+				'}';
 	}
 
 	@Override
 	public int compareTo(CardName o) {
-		int byLength = Integer.compare(name.length(), o.name.length());
-		int byName = name.compareTo(o.name);
+		int byLength = Integer.compare(printedName.length(), o.printedName.length());
+		int byName = printedName.compareTo(o.printedName);
 		if (byLength == 0) {
 			return byName;
 		}

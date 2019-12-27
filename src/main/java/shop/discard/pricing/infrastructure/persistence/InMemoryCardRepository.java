@@ -26,7 +26,7 @@ public class InMemoryCardRepository implements CardRepository {
 	public Card findByName(String name) {
 		return store.values()
 				.stream()
-				.filter(c -> c.getName().equalsIgnoreCase(name))
+				.filter(c -> c.getName().getPrintedName().equalsIgnoreCase(name))
 				.findFirst()
 				.orElse(null);
 	}
@@ -48,7 +48,7 @@ public class InMemoryCardRepository implements CardRepository {
 		return store.values()
 				.stream()
 				.filter(card -> card.getLanguage() == language)
-				.map(card -> CardName.from(card.getName()))
+				.map(Card::getName)
 				.distinct()
 				.collect(Collectors.toList());
 	}

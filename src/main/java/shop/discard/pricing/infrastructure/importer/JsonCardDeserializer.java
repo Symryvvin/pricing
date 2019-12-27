@@ -28,10 +28,11 @@ public class JsonCardDeserializer extends StdDeserializer<JsonCardData> {
 		JsonNode nameNode = node.get("printed_name");
 
 		if (nameNode == null) {
-			card.setName(node.get("name").textValue());
+			card.setPrintedName(node.get("name").textValue());
 		} else {
-			card.setName(node.get("printed_name").textValue());
+			card.setPrintedName(node.get("printed_name").textValue());
 		}
+		card.setOracleName(node.get("name").textValue());
 		card.setPrintCode(node.get("set").textValue());
 		card.setLang(node.get("lang").textValue());
 		card.setReleaseDate(node.get("released_at").textValue());

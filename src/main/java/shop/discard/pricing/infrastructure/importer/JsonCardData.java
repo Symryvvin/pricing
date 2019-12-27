@@ -5,7 +5,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 @JsonDeserialize(using = JsonCardDeserializer.class)
 public class JsonCardData {
 	private String id;
-	private String name;
+	private String printedName;
+	private String oracleName;
 	private String printCode;
 	private String lang;
 	private String releaseDate;
@@ -18,12 +19,20 @@ public class JsonCardData {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getPrintedName() {
+		return printedName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPrintedName(String printedName) {
+		this.printedName = printedName;
+	}
+
+	public String getOracleName() {
+		return oracleName;
+	}
+
+	public void setOracleName(String oracleName) {
+		this.oracleName = oracleName;
 	}
 
 	public String getPrintCode() {

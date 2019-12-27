@@ -8,16 +8,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Card implements Comparable<Card> {
+public class Card {
 	private static final String DATE_PATTERN = "yyyy-MM-dd";
 
 	private UUID guid;
-	private String name;
+	private CardName name;
 	private String printCode;
 	private Language language;
 	private LocalDate releaseDate;
 
-	public Card(UUID guid, String name, String printCode, Language language, LocalDate releaseDate) {
+	public Card(UUID guid, CardName name, String printCode, Language language, LocalDate releaseDate) {
 		this.guid = guid;
 		this.name = name;
 		this.printCode = printCode;
@@ -25,9 +25,16 @@ public class Card implements Comparable<Card> {
 		this.releaseDate = releaseDate;
 	}
 
-	public static Card from(String id, String name, String printCode, String languageCode, String releaseDate)
-			throws NotSupportedLanguageException {
+	public static Card from(
+			String id,
+			String printedName,
+			String oracleName,
+			String printCode,
+			String languageCode,
+			String releaseDate
+	) throws NotSupportedLanguageException {
 		UUID guid = UUID.fromString(id);
+		CardName name = new CardName(printedName, oracleName);
 		LocalDate parsedReleaseDate = LocalDate.parse(releaseDate, DateTimeFormatter.ofPattern(DATE_PATTERN));
 		Language language = Language.fromCode(languageCode);
 		return new Card(guid, name, printCode, language, parsedReleaseDate);
@@ -37,7 +44,7 @@ public class Card implements Comparable<Card> {
 		return guid;
 	}
 
-	public String getName() {
+	public CardName getName() {
 		return name;
 	}
 
@@ -79,16 +86,6 @@ public class Card implements Comparable<Card> {
 	@Override
 	public int hashCode() {
 		return Objects.hash(guid, name, printCode, language, releaseDate);
-	}
-
-	@Override
-	public int compareTo(Card o) {
-		int byLength = Integer.compare(name.length(), o.name.length());
-		int byName = name.compareTo(o.name);
-		if (byLength == 0) {
-			return byName;
-		}
-		return byLength;
 	}
 
 }

@@ -43,7 +43,7 @@ public class InMemoryCardNamesStore {
 				);
 	}
 
-	public Collection<String> findByPartOfName(String findString, String languageCode) throws NotSupportedLanguageException {
+	public Collection<CardName> findByPartOfName(String findString, String languageCode) throws NotSupportedLanguageException {
 		Language language = Language.fromCode(languageCode);
 		Stream<CardName> nameStream = cardNameCollection.get(language).stream();
 		if (NOT_WORD_PATTERN.matcher(findString).find()) {
@@ -53,28 +53,26 @@ public class InMemoryCardNamesStore {
 		}
 	}
 
-	private Collection<String> findByPartOfName(String findString, Stream<CardName> nameStream) {
+	private Collection<CardName> findByPartOfName(String findString, Stream<CardName> nameStream) {
 		return nameStream.filter(cn -> contains(cn, findString))
 				.sorted()
-				.map(CardName::getName)
 				.limit(MAX_SEARCH_RESULT_COUNT)
 				.collect(Collectors.toList());
 	}
 
 	private boolean contains(CardName cardName, String findString) {
-		return cardName.getName().toLowerCase().contains(findString.toLowerCase());
+		return cardName.getPrintedName().toLowerCase().contains(findString.toLowerCase());
 	}
 
-	private Collection<String> findByStartOfWord(String findString, Stream<CardName> nameStream) {
+	private Collection<CardName> findByStartOfWord(String findString, Stream<CardName> nameStream) {
 		return nameStream.filter(cn -> filter(cn, findString))
 				.sorted()
-				.map(CardName::getName)
 				.limit(MAX_SEARCH_RESULT_COUNT)
 				.collect(Collectors.toList());
 	}
 
 	private boolean filter(CardName cardName, String findString) {
-		return Arrays.stream(cardName.getName().split(" "))
+		return Arrays.stream(cardName.getPrintedName().split(" "))
 				.anyMatch(s -> s.toLowerCase().startsWith(findString.toLowerCase()));
 	}
 
