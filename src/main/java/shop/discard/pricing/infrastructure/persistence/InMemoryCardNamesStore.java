@@ -63,15 +63,17 @@ public class InMemoryCardNamesStore {
 	}
 
 	private Collection<CardName> findByStartOfWord(String findString, Stream<CardName> nameStream) {
-		return nameStream.filter(cn -> filter(cn, findString))
+		Pattern pattern = Pattern.compile(
+				"\\b" + findString,
+				Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CHARACTER_CLASS);
+		return nameStream.filter(cn -> filter(cn, pattern))
 				.sorted()
 				.limit(MAX_SEARCH_RESULT_COUNT)
 				.collect(Collectors.toList());
 	}
 
-	private boolean filter(CardName cardName, String findString) {
-		return Arrays.stream(cardName.getPrintedName().split(" "))
-				.anyMatch(s -> s.toLowerCase().startsWith(findString.toLowerCase()));
+	private boolean filter(CardName cardName, Pattern pattern) {
+		return pattern.matcher(cardName.getPrintedName()).find();
 	}
 
 }
