@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import shop.discard.pricing.domain.Card;
 import shop.discard.pricing.domain.CardName;
 import shop.discard.pricing.domain.CardRepository;
+import shop.discard.pricing.domain.lang.Language;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -43,10 +44,11 @@ public class InMemoryCardRepository implements CardRepository {
 	}
 
 	@Override
-	public Collection<CardName> getUniqueCardNames() {
+	public Collection<CardName> getUniqueCardNames(Language language) {
 		return store.values()
 				.stream()
-				.map(card -> CardName.from(card.getName(), card.getLanguage()))
+				.filter(card -> card.getLanguage() == language)
+				.map(card -> CardName.from(card.getName()))
 				.distinct()
 				.collect(Collectors.toList());
 	}

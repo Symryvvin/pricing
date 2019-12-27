@@ -1,5 +1,7 @@
 package shop.discard.pricing.domain;
 
+import shop.discard.pricing.domain.lang.Language;
+
 import java.util.Collection;
 
 public interface CardRepository {
@@ -12,5 +14,5 @@ public interface CardRepository {
 
 	void update(long id, Card card);
 
-	Collection<CardName> getUniqueCardNames();
+	Collection<CardName> getUniqueCardNames(Language language);
 }

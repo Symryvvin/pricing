@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import shop.discard.pricing.domain.Card;
 import shop.discard.pricing.domain.CardName;
 import shop.discard.pricing.domain.CardRepository;
+import shop.discard.pricing.domain.lang.Language;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -32,7 +33,7 @@ public class JpaCardRepository implements CardRepository {
 	}
 
 	@Override
-	public Collection<CardName> getUniqueCardNames() {
+	public Collection<CardName> getUniqueCardNames(Language language) {
 		return Collections.emptyList();
 	}
 }
