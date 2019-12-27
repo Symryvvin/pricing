@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import shop.discard.pricing.domain.lang.Language;
 import shop.discard.pricing.infrastructure.persistence.InMemoryCardNamesStore;
 
 @RestController()
@@ -25,9 +26,10 @@ public class SearchController {
 			@RequestParam(value = "name") String partOfName
 	) {
 		try {
-			if (checkMinNumberOfCharacters(partOfName)) {
+			Language language = Language.fromCode(langCode);
+			if (checkMinNumberOfCharacters(partOfName, language)) {
 				return new ResponseEntity<>(
-						namesStore.findByPartOfName(partOfName, langCode),
+						namesStore.findByPartOfName(partOfName, language),
 						HttpStatus.OK
 				);
 			}
@@ -39,7 +41,7 @@ public class SearchController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
-	private boolean checkMinNumberOfCharacters(String partOfName) {
-		return partOfName.length() >= MINIMUM_NUMBER_OF_CHARS;
+	private boolean checkMinNumberOfCharacters(String partOfName, Language language) {
+		return partOfName.length() >= MINIMUM_NUMBER_OF_CHARS || (language.isHieroglyphic() && partOfName.length() >= 1);
 	}
 }

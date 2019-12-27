@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import shop.discard.pricing.domain.CardName;
 import shop.discard.pricing.domain.CardRepository;
 import shop.discard.pricing.domain.lang.Language;
-import shop.discard.pricing.domain.lang.NotSupportedLanguageException;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
@@ -43,8 +42,7 @@ public class InMemoryCardNamesStore {
 				);
 	}
 
-	public Collection<CardName> findByPartOfName(String findString, String languageCode) throws NotSupportedLanguageException {
-		Language language = Language.fromCode(languageCode);
+	public Collection<CardName> findByPartOfName(String findString, Language language) {
 		Stream<CardName> nameStream = cardNameCollection.get(language).stream();
 		if (NOT_WORD_PATTERN.matcher(findString).find()) {
 			return findByPartOfName(findString, nameStream);

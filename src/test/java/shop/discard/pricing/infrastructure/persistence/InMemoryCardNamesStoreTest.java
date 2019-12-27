@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import shop.discard.pricing.domain.CardName;
+import shop.discard.pricing.domain.lang.Language;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,10 +19,10 @@ class InMemoryCardNamesStoreTest {
 	InMemoryCardNamesStore namesStore;
 
 	@Test
-	void findByPartOfName() throws Exception {
+	void findByPartOfName() {
 		String partOfName = "лес";
 
-		List<String> actual = namesStore.findByPartOfName(partOfName, "ru").stream()
+		List<String> actual = namesStore.findByPartOfName(partOfName, Language.RU).stream()
 				.map(CardName::getPrintedName)
 				.collect(Collectors.toList());
 
@@ -33,10 +34,10 @@ class InMemoryCardNamesStoreTest {
 	}
 
 	@Test
-	void findByPartOfNameWithHieroglyph() throws Exception {
+	void findByPartOfNameWithHieroglyph() {
 		String partOfName = "森";
 
-		List<String> actual = namesStore.findByPartOfName(partOfName, "ja").stream()
+		List<String> actual = namesStore.findByPartOfName(partOfName, Language.JA).stream()
 				.map(CardName::getPrintedName)
 				.collect(Collectors.toList());
 

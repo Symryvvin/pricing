@@ -46,4 +46,8 @@ public enum Language {
 		return name;
 	}
 
+	public boolean isHieroglyphic() {
+		return Arrays.asList(CN, CT, ZHS, ZHT, JA, KO, AR, GRC, HE, SA, PX).contains(this);
+	}
+
 }
