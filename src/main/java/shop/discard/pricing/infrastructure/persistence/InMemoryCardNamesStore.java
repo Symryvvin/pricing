@@ -14,13 +14,16 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Component
 @DependsOn("collectionService")
 public class InMemoryCardNamesStore {
 
 	private static final int MAX_SEARCH_RESULT_COUNT = 15;
+	private static final Pattern NOT_WORD_PATTERN = Pattern.compile("\\W", Pattern.UNICODE_CHARACTER_CLASS);
 
 	private Map<Language, Collection<CardName>> cardNameCollection;
 
@@ -42,8 +45,28 @@ public class InMemoryCardNamesStore {
 
 	public Collection<String> findByPartOfName(String findString, String languageCode) throws NotSupportedLanguageException {
 		Language language = Language.fromCode(languageCode);
-		return cardNameCollection.get(language).stream()
-				.filter(cn -> filter(cn, findString))
+		Stream<CardName> nameStream = cardNameCollection.get(language).stream();
+		if (NOT_WORD_PATTERN.matcher(findString).find()) {
+			return findByPartOfName(findString, nameStream);
+		} else {
+			return findByStartOfWord(findString, nameStream);
+		}
+	}
+
+	private Collection<String> findByPartOfName(String findString, Stream<CardName> nameStream) {
+		return nameStream.filter(cn -> contains(cn, findString))
+				.sorted()
+				.map(CardName::getName)
+				.limit(MAX_SEARCH_RESULT_COUNT)
+				.collect(Collectors.toList());
+	}
+
+	private boolean contains(CardName cardName, String findString) {
+		return cardName.getName().toLowerCase().contains(findString.toLowerCase());
+	}
+
+	private Collection<String> findByStartOfWord(String findString, Stream<CardName> nameStream) {
+		return nameStream.filter(cn -> filter(cn, findString))
 				.sorted()
 				.map(CardName::getName)
 				.limit(MAX_SEARCH_RESULT_COUNT)
